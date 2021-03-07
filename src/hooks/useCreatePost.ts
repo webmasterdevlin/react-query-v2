@@ -2,17 +2,19 @@ import axios from 'axios'
 import { useMutation } from 'react-query'
 
 import { queryCache } from '../'
+import { PostModel } from '../models/postModel'
 
 export default function useCreatePost() {
   return useMutation(
-    (values) => axios.post<any>('/api/posts', values).then((res) => res.data),
+    (values) =>
+      axios.post<PostModel>('/api/posts', values).then((res) => res.data),
     {
       onMutate: (values: any) => {
         queryCache.cancelQueries('posts')
 
-        const oldPosts = queryCache.getQueryData<any>('posts')
+        const oldPosts = queryCache.getQueryData<PostModel[]>('posts')
 
-        queryCache.setQueryData<any>('posts', (old) => {
+        queryCache.setQueryData<PostModel[]>('posts', (old) => {
           return [
             ...old,
             {
@@ -23,7 +25,7 @@ export default function useCreatePost() {
           ]
         })
 
-        return () => queryCache.setQueryData('posts', oldPosts)
+        return () => queryCache.setQueryData<PostModel[]>('posts', oldPosts)
       },
       onError: (error, values, rollback) => rollback(),
       onSuccess: () => queryCache.invalidateQueries('posts'),

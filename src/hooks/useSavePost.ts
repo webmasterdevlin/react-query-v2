@@ -2,16 +2,19 @@ import axios from 'axios'
 import { useMutation } from 'react-query'
 
 import { queryCache } from '../'
+import { PostModel } from '../models/postModel'
 
 export default function useSavePost() {
   return useMutation(
     (values: any) =>
-      axios.patch(`/api/posts/${values.id}`, values).then((res) => res.data),
+      axios
+        .patch<void>(`/api/posts/${values.id}`, values)
+        .then((res) => res.data),
     {
       onMutate: (values) => {
         queryCache.cancelQueries('posts')
 
-        const oldPost = queryCache.getQueryData(['posts', values.id])
+        const oldPost = queryCache.getQueryData<PostModel>(['posts', values.id])
 
         queryCache.setQueryData(['posts', values.id], values)
 

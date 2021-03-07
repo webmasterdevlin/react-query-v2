@@ -3,8 +3,6 @@ import App from 'next/app'
 import { createGlobalStyle } from 'styled-components'
 import normalize from 'styled-normalize'
 
-//
-
 const GlobalStyles = createGlobalStyle`
   ${normalize};
   html, body, body, [data-reactroot] {

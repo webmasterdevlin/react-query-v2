@@ -2,7 +2,6 @@ import shortid from 'shortid'
 import db from '../../../db'
 import { sleep } from '../../../utils'
 
-//
 const failureRate = 0
 
 export default async (req, res) => {

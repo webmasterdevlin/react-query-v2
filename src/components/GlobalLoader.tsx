@@ -3,7 +3,7 @@ import { useIsFetching } from 'react-query'
 
 import { Loader } from './styled'
 
-export default function GlobalLoader() {
+const GlobalLoader = () => {
   const isFetching = useIsFetching()
 
   return (
@@ -21,3 +21,4 @@ export default function GlobalLoader() {
     />
   )
 }
+export default GlobalLoader

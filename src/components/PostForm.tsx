@@ -1,32 +1,40 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 const defaultFormValues = {
   title: '',
   body: '',
 }
 
-export default function PostForm({
+type Props = {
+  onSubmit: (values: typeof defaultFormValues) => void
+  submitText: string
+  clearOnSubmit: boolean
+  initialValues: typeof defaultFormValues
+}
+
+const PostForm = ({
   onSubmit,
-  initialValues = defaultFormValues,
   submitText,
   clearOnSubmit,
-}: any) {
-  const [values, setValues] = React.useState(initialValues)
+  initialValues = defaultFormValues,
+}: Props) => {
+  const [values, setValues] = useState<{ title: string; body: string }>(
+    initialValues
+  )
+
+  useEffect(() => {
+    setValues(initialValues)
+  }, [initialValues])
 
   const setValue = (field, value) =>
     setValues((old) => ({ ...old, [field]: value }))
 
   const handleSubmit = (e) => {
-    if (clearOnSubmit) {
-      setValues(defaultFormValues)
-    }
+    if (clearOnSubmit) setValues(defaultFormValues)
+
     e.preventDefault()
     onSubmit(values)
   }
-
-  React.useEffect(() => {
-    setValues(initialValues)
-  }, [initialValues])
 
   return (
     <form onSubmit={handleSubmit}>
@@ -56,3 +64,4 @@ export default function PostForm({
     </form>
   )
 }
+export default PostForm
