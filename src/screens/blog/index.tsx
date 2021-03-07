@@ -7,7 +7,7 @@ import { prefetchPost } from '../../hooks/usePost'
 import { PostStyles } from '../../components/styled'
 
 export default function Home() {
-  const postsQuery = usePosts()
+  const postsQuery: any = usePosts()
 
   return (
     <div>

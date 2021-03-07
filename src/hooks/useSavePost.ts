@@ -5,7 +5,7 @@ import { queryCache } from '../'
 
 export default function useSavePost() {
   return useMutation(
-    (values) =>
+    (values: any) =>
       axios.patch(`/api/posts/${values.id}`, values).then((res) => res.data),
     {
       onMutate: (values) => {
@@ -17,7 +17,7 @@ export default function useSavePost() {
 
         return () => queryCache.setQueryData(['posts', values.id], oldPost)
       },
-      onError: (error, values, rollback) => rollback(),
+      onError: (error, values, rollback: any) => rollback(),
       onSuccess: (data, variables) => {
         queryCache.invalidateQueries('posts')
         queryCache.invalidateQueries(['posts', variables.id])

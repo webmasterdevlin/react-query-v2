@@ -5,14 +5,14 @@ import { queryCache } from '../'
 
 export default function useCreatePost() {
   return useMutation(
-    (values) => axios.post('/api/posts', values).then((res) => res.data),
+    (values) => axios.post<any>('/api/posts', values).then((res) => res.data),
     {
-      onMutate: (values) => {
+      onMutate: (values: any) => {
         queryCache.cancelQueries('posts')
 
-        const oldPosts = queryCache.getQueryData('posts')
+        const oldPosts = queryCache.getQueryData<any>('posts')
 
-        queryCache.setQueryData('posts', (old) => {
+        queryCache.setQueryData<any>('posts', (old) => {
           return [
             ...old,
             {

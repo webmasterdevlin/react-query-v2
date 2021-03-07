@@ -1,5 +1,6 @@
 import React from 'react'
 import { useIsFetching } from 'react-query'
+
 import { Loader } from './styled'
 
 export default function GlobalLoader() {

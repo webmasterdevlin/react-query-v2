@@ -5,13 +5,14 @@ import { queryCache } from '../'
 
 export default function useDeletePost() {
   return useMutation(
-    (postId) => axios.delete(`/api/posts/${postId}`).then((res) => res.data),
+    (postId) =>
+      axios.delete<any>(`/api/posts/${postId}`).then((res) => res.data),
     {
-      onError: (error, variables, rollback) => {
+      onError: (error, variables, rollback: any) => {
         rollback && rollback()
       },
       onSuccess: (data, postId) => {
-        const previousPosts = queryCache.getQueryData('posts')
+        const previousPosts = queryCache.getQueryData<any>('posts')
 
         const optimisticPosts = previousPosts.filter((d) => d.id !== postId)
 

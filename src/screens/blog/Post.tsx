@@ -6,8 +6,8 @@ import { useParams } from 'react-router-dom'
 import usePost from '../../hooks/usePost'
 
 export default function Post() {
-  const { postId } = useParams()
-  const postQuery = usePost(postId)
+  const { postId } = useParams<any>()
+  const postQuery: any = usePost(postId)
 
   return (
     <>

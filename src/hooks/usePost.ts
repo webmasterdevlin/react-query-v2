@@ -7,15 +7,15 @@ export const fetchPost = (_, postId) =>
   axios.get(`/api/posts/${postId}`).then((res) => res.data)
 
 export const prefetchPost = (postId) => {
-  queryCache.prefetchQuery(['posts', String(postId)], fetchPost, {
+  queryCache.prefetchQuery<any>(['posts', String(postId)], fetchPost, {
     staleTime: 5000,
   })
 }
 
 export default function usePost(postId) {
-  return useQuery(['posts', postId], fetchPost, {
+  return useQuery<any>(['posts', postId], fetchPost, {
     placeholderData: () =>
-      queryCache.getQueryData('posts')?.find((d) => d.id == postId),
+      queryCache.getQueryData<any>('posts')?.find((d) => d.id == postId),
     staleTime: 2000,
   })
 }

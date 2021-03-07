@@ -10,7 +10,7 @@ export default function PostForm({
   initialValues = defaultFormValues,
   submitText,
   clearOnSubmit,
-}) {
+}: any) {
   const [values, setValues] = React.useState(initialValues)
 
   const setValue = (field, value) =>
@@ -44,12 +44,11 @@ export default function PostForm({
       <label htmlFor="body">body</label>
       <div>
         <textarea
-          type="text"
           name="body"
           value={values.body}
           onChange={(e) => setValue('body', e.target.value)}
           required
-          rows="10"
+          rows={10}
         />
       </div>
       <br />

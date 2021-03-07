@@ -1,3 +1,5 @@
+/// <reference types="styled-components/cssprop" />
+
 import React from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { ReactQueryCacheProvider, QueryCache } from 'react-query'

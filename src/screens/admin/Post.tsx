@@ -1,8 +1,6 @@
 import React from 'react'
 import { Link, useParams, useHistory } from 'react-router-dom'
 
-//
-
 import usePost from '../../hooks/usePost'
 import useSavePost from '../../hooks/useSavePost'
 import useDeletePost from '../../hooks/useDeletePost'
@@ -11,7 +9,7 @@ import PostForm from '../../components/PostForm'
 import { Loader } from '../../components/styled'
 
 export default function Post() {
-  const { postId } = useParams()
+  const { postId } = useParams<any>()
   const navigate = useHistory()
 
   const postQuery = usePost(postId)
