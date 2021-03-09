@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link, useParams, useHistory } from 'react-router-dom'
 
-import usePost from '../../hooks/usePost'
-import useSavePost from '../../hooks/useSavePost'
-import useDeletePost from '../../hooks/useDeletePost'
+import useFetchPostById from '../../hooks/useFetchPostById'
+import useUpdatePost from '../../hooks/useUpdatePost'
+import useRemovePost from '../../hooks/useRemovePost'
 
 import PostForm from '../../components/PostForm'
 import { Loader } from '../../components/styled'
@@ -12,9 +12,9 @@ export default function Post() {
   const { postId } = useParams<any>()
   const navigate = useHistory()
 
-  const postQuery = usePost(postId)
-  const [savePost, savePostInfo] = useSavePost()
-  const [deletePost, deletePostInfo] = useDeletePost()
+  const postQuery = useFetchPostById(postId)
+  const [savePost, savePostInfo] = useUpdatePost()
+  const [deletePost, deletePostInfo] = useRemovePost()
 
   const onSubmit = async (values) => {
     savePost(values)

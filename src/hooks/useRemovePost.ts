@@ -4,7 +4,7 @@ import { useMutation } from 'react-query'
 import { queryCache } from '../'
 import { PostModel } from '../models/postModel'
 
-export default function useDeletePost() {
+export default function useRemovePost() {
   return useMutation(
     (postId) =>
       axios.delete<void>(`/api/posts/${postId}`).then((res) => res.data),

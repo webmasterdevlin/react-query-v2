@@ -4,7 +4,7 @@ import { useMutation } from 'react-query'
 import { queryCache } from '../'
 import { PostModel } from '../models/postModel'
 
-export default function useSavePost() {
+export default function useUpdatePost() {
   return useMutation(
     (values: any) =>
       axios

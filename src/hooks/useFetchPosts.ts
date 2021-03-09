@@ -13,6 +13,6 @@ export const prefetchPost = (postId: string) => {
   })
 }
 
-export default function usePosts() {
+export default function useFetchPosts() {
   return useQuery<any>('posts', fetchPosts)
 }

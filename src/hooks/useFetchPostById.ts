@@ -13,7 +13,7 @@ export const prefetchPost = (postId: string) => {
   })
 }
 
-export default function usePost(postId) {
+export default function useFetchPostById(postId) {
   return useQuery<PostModel>(['posts', postId], fetchPost, {
     placeholderData: () =>
       queryCache.getQueryData<any>('posts')?.find((d) => d.id == postId),

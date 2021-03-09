@@ -3,11 +3,11 @@ import { useParams } from 'react-router-dom'
 
 //
 
-import usePost from '../../hooks/usePost'
+import useFetchPostById from '../../hooks/useFetchPostById'
 
 export default function Post() {
   const { postId } = useParams<any>()
-  const postQuery: any = usePost(postId)
+  const postQuery: any = useFetchPostById(postId)
 
   return (
     <>

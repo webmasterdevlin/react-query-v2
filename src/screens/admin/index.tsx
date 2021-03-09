@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom'
 import PostForm from '../../components/PostForm'
 import { Loader } from '../../components/styled'
 
-import usePosts from '../../hooks/usePosts'
-import { prefetchPost } from '../../hooks/usePost'
+import useFetchPosts from '../../hooks/useFetchPosts'
+import { prefetchPost } from '../../hooks/useFetchPostById'
 import useCreatePost from '../../hooks/useCreatePost'
 
 export default function Posts() {
-  const postsQuery = usePosts()
+  const postsQuery = useFetchPosts()
   const [createPost, createPostInfo] = useCreatePost()
 
   return (

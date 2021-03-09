@@ -1,13 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import usePosts from '../../hooks/usePosts'
-import { prefetchPost } from '../../hooks/usePost'
+import useFetchPosts from '../../hooks/useFetchPosts'
+import { prefetchPost } from '../../hooks/useFetchPostById'
 
 import { PostStyles } from '../../components/styled'
 
 export default function Home() {
-  const postsQuery: any = usePosts()
+  const postsQuery: any = useFetchPosts()
 
   return (
     <div>
